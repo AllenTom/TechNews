@@ -69,8 +69,8 @@
                                     <tr class="gradeX">
                                         <td>{$vo.id}</td>
                                         <td>{$vo.title}</td>
-                                        <td>{$vo.author}</td>
-                                        <td>{$vo.category}</td>
+                                        <td>{$vo->user->username}</td>
+                                        <td>{$vo->articleCategory->name}</td>
                                         <td>{$vo.createAt}</td>
                                         <td>
                                             <div class="tpl-table-black-operation">

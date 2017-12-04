@@ -20,7 +20,9 @@
     <div>
         <h1>{$article->title}</h1>
         <hr/>
-        <span>作者：Allen</span><span>发布于:{$article->createAt}</span>
+        <img src="{$article->user->profile->avatar}"
+             class="rounded-circle" style="width: 32px">
+        <span style="margin-left: 5px">{$article->user->profile->nickname}</span><span style="margin-left: 50px">发布于:{$article->createAt}</span>
         <div style="margin-top: 30px">
             {$article->content}
         </div>

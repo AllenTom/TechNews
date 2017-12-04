@@ -27,12 +27,12 @@ class Index extends ApplicationController
         try {
             $user = User::get([
                 "username" => $username,
-                "password" => $password
+                "password" => md5($password . Config::get('salt'))
             ]);
         } catch (DbException $e) {
             $this->error("数据库错误");
         }
-        if ($user == null){
+        if ($user == null) {
             $this->error("密码错误");
         }
 
@@ -40,12 +40,14 @@ class Index extends ApplicationController
         $token = md5($username . $key);
         Cookie::set("token", $token);
         Auth::create([
-            "token_key"=>$token,
-            "user"=>$user->id
+            "token_key" => $token,
+            "user" => $user->id
         ]);
         return $this->redirect("/admin");
     }
-    public function logout(){
+
+    public function logout()
+    {
         Cookie::delete("token");
         $this->redirect("/login");
     }

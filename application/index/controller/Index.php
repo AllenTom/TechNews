@@ -10,8 +10,9 @@ class Index extends BaseIndexController
     public function index()
     {
         $model = new Article();
-        $articleList = $model->paginate(3);
+        $articleList = $model->paginate(6);
         $this->assign("articleList", $articleList);
+        dump($articleList[0]->category);
         return $this->fetch('index');
     }
 }

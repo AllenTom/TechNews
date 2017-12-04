@@ -3,7 +3,7 @@
     <div class="tpl-sidebar-user-panel">
         <div class="tpl-user-panel-slide-toggleable">
             <div class="tpl-user-panel-profile-picture">
-                <img src="/static/img/user04.png" alt="">
+                <img src="{$profile->avatar}" alt="">
             </div>
             <span class="user-panel-logged-in-text">
               <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
@@ -31,7 +31,7 @@
                class="active"
                {/eq}
             >
-            <i class="am-icon-table sidebar-nav-link-logo"></i> 文章
+            <i class="am-icon-file-text-o sidebar-nav-link-logo"></i> 文章
             </a>
         </li>
         <li class="sidebar-nav-link">
@@ -40,7 +40,16 @@
                class="active"
                {/eq}
             >
-            <i class="am-icon-calendar sidebar-nav-link-logo"></i> 分类
+            <i class="am-icon-folder-open sidebar-nav-link-logo"></i> 分类
+            </a>
+        </li>
+        <li class="sidebar-nav-link">
+            <a href="/admin/profile/setting"
+               {eq name="tabIndex" value="profile" }
+               class="active"
+               {/eq}
+            >
+            <i class="am-icon-user sidebar-nav-link-logo"></i> 用户设置
             </a>
         </li>
     </ul>

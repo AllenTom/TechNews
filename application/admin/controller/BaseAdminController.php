@@ -34,6 +34,7 @@ abstract class BaseAdminController extends ApplicationController
             $this->redirect('/login');
         }
         $this->user = User::get($token->user);
+        $this->assign('profile',$this->user->profile);
         $this->assign('user', $this->user);
         $this->assign("tabIndex", $this->getSideTabIndex());
     }

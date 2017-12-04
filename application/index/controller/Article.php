@@ -21,6 +21,7 @@ class Article extends BaseIndexController
         $id = $this->request->param("id");
         $article = ArticleModel::get($id);
         $this->assign("article", $article);
+        $this->assign("articleProfile",$article->user->profile);
         return $this->fetch('index');
     }
 }

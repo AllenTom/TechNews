@@ -21,7 +21,7 @@
 
 </head>
 
-<body data-type="chart">
+<body data-type="chart" class="theme-white">
 <script src="/static/js/theme.js"></script>
 <div class="am-g tpl-g">
     <!-- 头部 -->
@@ -32,8 +32,6 @@
     <!-- 内容区域 -->
     <div class="tpl-content-wrapper">
         <div class="row-content am-cf">
-
-
             <div class="row">
                 <div class="am-u-sm-12 am-u-md-12 am-u-lg-6">
                     <div class="widget am-cf">
@@ -58,10 +56,10 @@
                                 <tbody>
                                 {volist name="recentlyArticle" id="vo"}
                                 <tr class="gradeX">
-                                    <td>{$vo.id}</td>
+                                    <td><a href="/article/{$vo.id}">{$vo.id}</a></td>
                                     <td>{$vo.title}</td>
-                                    <td>{$vo.author}</td>
-                                    <td>{$vo.category}</td>
+                                    <td>{$vo->user->username}</td>
+                                    <td>{$vo->articleCategory->name}</td>
                                     <td>{$vo.createAt}</td>
                                 </tr>
                                 {/volist}

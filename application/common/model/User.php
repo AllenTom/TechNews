@@ -13,5 +13,13 @@ use think\Model;
 
 class User extends Model
 {
+    public function profile()
+    {
+        return $this->hasOne('Profile', 'user');
+    }
 
+    public function articles()
+    {
+        return $this->hasMany('Article', 'author');
+    }
 }

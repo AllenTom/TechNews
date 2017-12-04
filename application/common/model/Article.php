@@ -12,5 +12,12 @@ use think\Model;
 
 class Article extends Model
 {
-
+    public function user()
+    {
+        return $this->belongsTo('User', 'author');
+    }
+    public function articleCategory()
+    {
+        return $this->belongsTo('Category', 'category');
+    }
 }
