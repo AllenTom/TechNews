@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+    <title>{$article->title}</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+{include file="../application/index/view/header.html" /}
+
+<main role="main" class="container" style="margin-top: 60px;min-height: 700px">
+
+    <div>
+        <h1>{$article->title}</h1>
+        <hr/>
+        <span>作者：Allen</span><span>发布于:{$article->createAt}</span>
+        <div style="margin-top: 30px">
+            {$article->content}
+        </div>
+    </div>
+
+</main>
+
+{include file="../application/index/view/footer.html" /}
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.13.0/popper.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</body>
+</html>

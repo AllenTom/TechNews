@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="/static/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="/static/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="/static/css/amazeui.datatables.min.css"/>
+    <link rel="stylesheet" href="/static/css/app.css">
+    <script src="/static/js/jquery.min.js"></script>
+
+</head>
+
+<body data-type="chart">
+<script src="/static/js/theme.js"></script>
+<div class="am-g tpl-g">
+    <!-- 头部 -->
+    {include file="../application/admin/view/header.html" /}
+    <!-- 侧边导航栏 -->
+    {include file="../application/admin/view/sidenav.html" /}
+
+    <!-- 内容区域 -->
+    <div class="tpl-content-wrapper">
+        <div class="row-content am-cf" style="background-color: white;padding: 24px;margin: 16px">
+            <form class="am-form" action="/admin/article/save" method="post">
+
+                <fieldset>
+                    <legend>添加文章</legend>
+
+                    <div class="am-form-group">
+                        <label for="doc-ipt-email-1">标题</label>
+                        <input type="text" class="" id="doc-ipt-email-1" placeholder="输入标题" name="title">
+                    </div>
+                    <div class="am-form-group">
+                        <label for="doc-select-2">文章分类</label>
+                        <select class="" id="doc-select-2" name="category">
+                            {volist name="categoryList" id="vo"}
+                            <option value="{$vo.id}">{$vo.name}</option>
+                            {/volist}
+                        </select>
+                    </div>
+
+                    <div class="am-form-group">
+                        <label for="editor">文本域</label>
+                        <div class="" name="content" id="editor"></div>
+                    </div>
+
+                    <p>
+                        <button type="submit" class="am-btn am-btn-default">添加</button>
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+{include file="../application/admin/view/public_js.html" /}
+<script type="text/javascript" charset="utf-8" src="/static/../uedit/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/../uedit/ueditor.all.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/../uedit/lang/zh-cn/zh-cn.js"></script>
+<script>
+    var ue = UE.getEditor('editor');
+</script>
+</body>
+
+</html>

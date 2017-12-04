@@ -1,0 +1,47 @@
+<div class="left-sidebar">
+    <!-- 用户信息 -->
+    <div class="tpl-sidebar-user-panel">
+        <div class="tpl-user-panel-slide-toggleable">
+            <div class="tpl-user-panel-profile-picture">
+                <img src="/static/img/user04.png" alt="">
+            </div>
+            <span class="user-panel-logged-in-text">
+              <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
+              {$user->username}
+          </span>
+        </div>
+    </div>
+
+    <!-- 菜单 -->
+    <ul class="sidebar-nav">
+        <li class="sidebar-nav-link">
+            <a href="/admin"
+
+               {eq name="tabIndex" value="home" }
+               class="active"
+               {/eq}
+
+            >
+            <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
+            </a>
+        </li>
+        <li class="sidebar-nav-link">
+            <a href="/admin/article"
+               {eq name="tabIndex" value="article" }
+               class="active"
+               {/eq}
+            >
+            <i class="am-icon-table sidebar-nav-link-logo"></i> 文章
+            </a>
+        </li>
+        <li class="sidebar-nav-link">
+            <a href="/admin/category"
+               {eq name="tabIndex" value="category" }
+               class="active"
+               {/eq}
+            >
+            <i class="am-icon-calendar sidebar-nav-link-logo"></i> 分类
+            </a>
+        </li>
+    </ul>
+</div>
