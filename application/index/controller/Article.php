@@ -16,12 +16,14 @@ use app\common\model\Category as CategoryModel;
 class Article extends BaseIndexController
 {
     protected $headerNavIndex = "Article";
+
     public function index()
     {
         $id = $this->request->param("id");
         $article = ArticleModel::get($id);
+        $article->save(['view_count' => $article->view_count + 1], ['id' => $article->id]);
         $this->assign("article", $article);
-        $this->assign("articleProfile",$article->user->profile);
+        $this->assign("articleProfile", $article->user->profile);
         return $this->fetch('index');
     }
 }
