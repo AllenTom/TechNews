@@ -70,7 +70,7 @@
                                         <td>
                                             <div class="tpl-table-black-operation">
                                                 <a href="javascript:;">
-                                                    <i class="am-icon-pencil"></i> 编辑
+                                                    <i class="am-icon-pencil" onclick="showModifyDialog({$vo.id})"></i> 编辑
                                                 </a>
                                                 <a onclick="showDeleteDialog({$vo.id})" href="#"
                                                    class="tpl-table-black-operation-del">
@@ -120,6 +120,22 @@
             <span class="am-modal-btn" data-am-modal-cancel>取消</span>
             <span class="am-modal-btn" data-am-modal-confirm>确定</span>
         </div>
+    </div>
+</div>
+<div class="am-modal am-modal-prompt" tabindex="-1" id="modify-category-prompt">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">文章分类</div>
+        <form action="/admin/category/modify" method="post" id="modify-category-form">
+            <div class="am-modal-bd">
+                分类名称
+                <input type="text" class="am-modal-prompt-input" name="name">
+            </div>
+            <input type="hidden" name="id" value="0" id="modify-category-id">
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+            </div>
+        </form>
     </div>
 </div>
 {include file="../application/admin/view/public_js.html" /}

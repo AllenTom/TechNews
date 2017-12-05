@@ -23,6 +23,7 @@ class Profile extends BaseAdminController
 
     public function saveprofile()
     {
+
         $file = request()->file('avatar');
 
         // 移动到框架应用根目录/public/uploads/ 目录下
@@ -39,7 +40,7 @@ class Profile extends BaseAdminController
                 echo $file->getError();
             }
         }
-        if ($this->request->has("password")) {
+        if ($this->request->post("password") != "") {
             $password = $this->request->post("password");
             if ($this->user->checkPassword($password)) {
                 $this->user->save([
@@ -57,6 +58,7 @@ class Profile extends BaseAdminController
      * 获取该页的Model
      * @return Model
      */
+
     function getModel()
     {
         return new ProfileModel();

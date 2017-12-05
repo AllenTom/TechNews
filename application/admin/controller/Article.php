@@ -9,6 +9,7 @@
 namespace app\admin\controller;
 
 
+use app\admin\validate\ArticleValidate;
 use think\Controller;
 use app\common\model as Model;
 
@@ -66,6 +67,16 @@ class Article extends BaseAdminController
         $this->assign("categoryList", $categoryList);
         return $this->fetch("edit");
 
+    }
+
+    public function save()
+    {
+
+        $result = $this->validate($this->request->post(), 'ArticleValidate.add');
+        if (true !== $result) {
+            $this->error($result);
+        }
+        parent::save();
     }
 
 

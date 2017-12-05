@@ -19,6 +19,7 @@
 
     <div>
         <h1>{$article->title}</h1>
+        <?php if($article->cover == "") { echo "无封面"; } ?>
         <hr/>
         <img src="{$article->user->profile->avatar}"
              class="rounded-circle" style="width: 32px">

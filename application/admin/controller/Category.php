@@ -31,6 +31,24 @@ class Category extends BaseAdminController
         return $this->fetch('index');
     }
 
+    public function save()
+    {
+        $result = $this->validate($this->request->post(), 'CategoryValidate.add');
+        if (true !== $result) {
+            $this->error($result);
+        }
+        parent::save();
+    }
+
+    public function modify()
+    {
+        $result = $this->validate($this->request->post(), 'CategoryValidate.modify');
+        if (true !== $result) {
+            $this->error($result);
+        }
+        parent::modify();
+    }
+
 
     public function delete()
     {

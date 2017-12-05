@@ -35,3 +35,15 @@ const showAddDialog = () => {
         }
     });
 };
+
+const showModifyDialog = (id) => {
+    $('#modify-category-prompt').modal({
+        onConfirm: () => {
+            $('#modify-category-id').val(id);
+            $('#modify-category-form').submit()
+        },
+        onCancel: () => {
+
+        }
+    });
+};
