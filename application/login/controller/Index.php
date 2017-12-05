@@ -35,18 +35,12 @@ class Index extends ApplicationController
             $this->error("用户不存在");
 
         }
-        if (!$user->checkPassword($password)){
+        if (!$user->checkPassword($password)) {
             $this->error("密码错误");
         }
-
-        $key = Config::get("salt");
-        $token = md5($username . $key);
-        Cookie::set("token", $token);
-        Auth::create([
-            "token_key" => $token,
-            "user" => $user->id
-        ]);
-        return $this->redirect("/admin");
+        $token_key = Auth::createToken($user->id);
+        Cookie::set("token", $token_key, Config::get('user_token_expire'));
+        $this->redirect("/admin");
     }
 
     public function logout()
