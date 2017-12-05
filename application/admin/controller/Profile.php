@@ -9,6 +9,7 @@
 namespace app\admin\controller;
 
 
+use think\Config;
 use think\Model;
 use app\common\model\Profile as ProfileModel;
 
@@ -30,13 +31,24 @@ class Profile extends BaseAdminController
             if ($info) {
                 $saveName = $info->getSaveName();
                 $this->getModel()->save(
-                    ["avatar" => "/imgs/avatar/${saveName}","nickname"=>$this->request->post("nickname")],
+                    ["avatar" => "/imgs/avatar/${saveName}", "nickname" => $this->request->post("nickname")],
                     ["user" => $this->user->id]
                 );
             } else {
                 // 上传失败获取错误信息
                 echo $file->getError();
             }
+        }
+        if ($this->request->has("password")) {
+            $password = $this->request->post("password");
+            if ($this->user->checkPassword($password)) {
+                $this->user->save([
+                    "password" => md5($this->request->post("newPassword").Config::get("salt"))
+                ], ["id" => $this->user->id]);
+            } else {
+                $this->error("原始密码错误");
+            }
+
         }
         $this->redirect('/admin/profile/setting');
     }

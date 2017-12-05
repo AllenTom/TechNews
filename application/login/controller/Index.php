@@ -26,13 +26,16 @@ class Index extends ApplicationController
         $password = $this->request->post('password');
         try {
             $user = User::get([
-                "username" => $username,
-                "password" => md5($password . Config::get('salt'))
+                "username" => $username
             ]);
         } catch (DbException $e) {
             $this->error("数据库错误");
         }
         if ($user == null) {
+            $this->error("用户不存在");
+
+        }
+        if (!$user->checkPassword($password)){
             $this->error("密码错误");
         }
 

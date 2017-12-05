@@ -17,6 +17,9 @@ use think\Model;
 
 abstract class BaseAdminController extends ApplicationController
 {
+    /**
+     * @var User $user 登录的用户
+     */
     protected $user;
     // 数据操作之后重定向页面
     protected $redirect_url = '/admin';

@@ -68,17 +68,35 @@ class Article extends BaseAdminController
 
     }
 
+
     /**
      * 将请求的表单转换数组
      * @return array 返回的数组
      */
     function requestFormToArray()
     {
+        $file = request()->file('cover');
+
+        // 移动到框架应用根目录/public/uploads/ 目录下
+        if ($file) {
+            $info = $file->move(ROOT_PATH . 'public' . DS . 'imgs' . DS . 'cover', "article_" . md5($this->request->post('title')));
+            if ($info) {
+                $saveName = $info->getSaveName();
+            } else {
+                // 上传失败获取错误信息
+                echo $file->getError();
+            }
+
+        } else {
+            $saveName = null;
+        }
+
         return [
             "title" => $this->request->post('title'),
             "category" => $this->request->post('category'),
             "content" => $this->request->post('content'),
             "author" => $this->user->id,
+            "cover" => $saveName,
             "createAt" => date("Y-m-d h:i:s"),
             "updateAt" => date("Y-m-d h:i:s"),
         ];

@@ -13,5 +13,8 @@ use think\Model;
 
 class Profile extends Model
 {
-
+    public function profileUser()
+    {
+        return $this->belongsTo('User','user');
+    }
 }
