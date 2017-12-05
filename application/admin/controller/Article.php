@@ -99,7 +99,7 @@ class Article extends BaseAdminController
             }
 
         } else {
-            $saveName = null;
+            $saveName = "article_default.jpg";
         }
 
         return [
@@ -107,7 +107,7 @@ class Article extends BaseAdminController
             "category" => $this->request->post('category'),
             "content" => $this->request->post('content'),
             "author" => $this->user->id,
-            "cover" => $saveName,
+            "cover" => "/imgs/cover/${saveName}",
             "createAt" => date("Y-m-d h:i:s"),
             "updateAt" => date("Y-m-d h:i:s"),
         ];

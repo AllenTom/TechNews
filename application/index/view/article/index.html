@@ -19,11 +19,14 @@
 
     <div>
         <h1>{$article->title}</h1>
-        <?php if($article->cover == "") { echo "无封面"; } ?>
+
         <hr/>
         <img src="{$article->user->profile->avatar}"
-             class="rounded-circle" style="width: 32px">
+             class="rounded-circle" style="width: 32px;hei">
         <span style="margin-left: 5px">{$article->user->profile->nickname}</span><span style="margin-left: 50px">发布于:{$article->createAt}</span>
+        <div style="width: 100%;height: 200px;background-image: url({$article->cover});margin-top: 30px">
+
+        </div>
         <div style="margin-top: 30px">
             {$article->content}
         </div>
