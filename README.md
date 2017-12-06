@@ -1,5 +1,4 @@
 # TechNews
----  
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)]()
 [![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)]()  
 新闻发布系统
